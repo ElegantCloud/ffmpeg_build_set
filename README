@@ -8,4 +8,5 @@ We use standalone toolchain here to build Android libraries.
 Method to generate standalone toolchain:
 Execute $NDK/build/tools/make-standalone-toolchain.sh --platform=android-8 --install-dir=/Users/yourname/android-toolchain
 and it will generate android-toolchain folder in the specifed path, some basic libs and include files are included in the sysroot folder of android-toolchain.
-The parameter --platform specify the android platform api you want to use.
+Note:	$NDK is where the android ndk toolkit is installed. 
+	The parameter --platform specify the android platform api you want to use.
