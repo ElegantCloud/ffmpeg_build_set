@@ -1,0 +1,18 @@
+#!/bin/tcsh -f
+
+if (! -d armv6) mkdir armv6
+
+rm armv6/*.a
+
+
+export CROSS_COMPILE=/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/
+export XCFLAGS="-isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk -I/Users/rcbt/Desktop/openssllib/include/ -arch armv6"
+export XLDFLAGS="-isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk -L/Users/rcbt/Desktop/openssllib/ -arch armv6"
+
+
+make SYS=darwin
+
+make SYS=darwin prefix=armv6/ install
+
+
+make clean

@@ -1,0 +1,14 @@
+#!/bin/tcsh -f
+
+if (! -d armv6) mkdir armv6
+
+rm armv6/*.a
+
+
+CC=/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc ./configure --host=arm-apple-darwin --sysroot=/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk --disable-asm --prefix=armv6/ --extra-cflags='-arch armv6' --extra-ldflags='-arch armv6 -L/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk/usr/lib/system' --enable-pic --enable-static
+
+
+make && make install 
+
+
+make clean

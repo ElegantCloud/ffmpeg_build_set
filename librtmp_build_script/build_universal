@@ -1,0 +1,16 @@
+#!/bin/tcsh -f
+
+source ./build_i386
+source ./build_armv6
+source ./build_armv7
+
+
+if (! -d lib) mkdir lib
+
+rm lib/*.a
+
+
+lipo -create -arch i386 i386/lib/librtmp.a -arch armv6 armv6/lib/librtmp.a -arch armv7 armv7/lib/librtmp.a -output lib/librtmp.a
+
+
+cp -r armv7/include lib/

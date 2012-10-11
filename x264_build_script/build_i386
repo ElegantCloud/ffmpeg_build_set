@@ -1,0 +1,14 @@
+#!/bin/tcsh -f
+
+if (! -d i386) mkdir i386
+
+rm i386/*.a
+
+
+CC=/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc ./configure --host=i386-apple-darwin --sysroot=/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk --disable-asm --prefix=i386/ --extra-cflags='-arch i386' --extra-ldflags='-arch i386 -L/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/usr/lib/system' --enable-pic --enable-static
+
+
+make && make install
+
+
+make clean

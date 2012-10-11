@@ -1,0 +1,13 @@
+#!/bin/tcsh -f
+
+if (! -d armv7) mkdir armv7
+
+rm armv7/*.a
+
+./configure --disable-doc --disable-ffmpeg --disable-ffplay --disable-ffserver --enable-cross-compile --enable-pic --disable-encoders --disable-decoders --disable-muxers --disable-demuxers --arch=arm --target-os=darwin --cc=/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc --as='gas-preprocessor/gas-preprocessor.pl /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc' --sysroot=/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk --cpu=cortex-a8 --extra-cflags='-arch armv7 -I/Users/rcbt/Desktop/x264lib/include/x264/ -I/Users/rcbt/Desktop/speexlib/include/' --extra-ldflags='-arch armv7 -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk -L/Users/rcbt/Desktop/x264lib/ -L/Users/rcbt/Desktop/speexlib/' --enable-gpl --enable-libx264 --enable-libspeex --enable-decoder=h264 --enable-decoder=libspeex --enable-encoder=libx264 --enable-encoder=libspeex --enable-muxer=flv --enable-muxer=h264 --enable-muxer=ogg --enable-demuxer=flv --enable-demuxer=h264 --enable-demuxer=ogg --prefix=armv7/ --enable-librtmp
+
+
+make
+
+
+make clean

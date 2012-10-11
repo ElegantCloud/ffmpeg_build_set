@@ -1,0 +1,14 @@
+#!/bin/tcsh -f
+
+if (! -d armv7) mkdir armv7
+
+rm armv7/*.a
+
+
+CC=/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc ./configure --host=arm-apple-darwin --sysroot=/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk --prefix=armv7/ --extra-cflags='-arch armv7' --extra-ldflags='-arch armv7 -L/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk/usr/lib/system' --enable-pic --enable-static
+
+
+make && make install
+
+
+make clean

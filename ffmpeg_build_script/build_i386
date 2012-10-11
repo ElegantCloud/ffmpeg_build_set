@@ -1,0 +1,14 @@
+#!/bin/tcsh -f
+
+if (! -d i386) mkdir i386
+
+rm i386/*.a
+
+
+./configure --disable-doc --disable-ffmpeg --disable-ffplay --disable-ffserver --enable-cross-compile --enable-pic --disable-encoders --disable-decoders --disable-muxers --disable-demuxers --cc=/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc --as='gas-preprocessor/gas-preprocessor.pl /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc' --extra-ldflags=-L/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/usr/lib/system --sysroot=/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk --target-os=darwin --arch=i386 --cpu=i386 --extra-cflags='-arch i386 -I/Users/rcbt/Desktop/x264lib/include/x264/ -I/Users/rcbt/Desktop/speexlib/include/' --extra-ldflags='-arch i386 -L/Users/rcbt/Desktop/x264lib/ -L/Users/rcbt/Desktop/speexlib/' --enable-gpl --enable-libx264 --enable-libspeex --enable-decoder=h264 --enable-decoder=libspeex --enable-encoder=libx264 --enable-encoder=libspeex --enable-muxer=flv --enable-muxer=h264 --enable-muxer=ogg --enable-demuxer=flv --enable-demuxer=h264 --enable-demuxer=ogg --prefix=i386/ --enable-librtmp
+
+
+make && make install
+
+
+make clean

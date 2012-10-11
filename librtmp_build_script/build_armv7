@@ -1,0 +1,18 @@
+#!/bin/tcsh -f
+
+if (! -d armv7) mkdir armv7
+
+rm armv7/*.a
+
+
+export CROSS_COMPILE=/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/
+export XCFLAGS="-isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk -I/Users/rcbt/Desktop/openssllib/include/ -arch armv7"
+export XLDFLAGS="-isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk -L/Users/rcbt/Desktop/openssllib/ -arch armv7"
+
+
+make SYS=darwin
+
+make SYS=darwin prefix=armv7/ install
+
+
+make clean

@@ -1,0 +1,5 @@
+ffmpeg在使用librtmp的时候需要使用pkg-config工具(使用brew安装)，pkg-config安装完成后需要将编译librtmp时生成的librtmp.pc export到pkg-config的path中，并且修改librtmp.pc文件，prefix改为librtmp各个平台的生成路径(例如librtmp arm7的路径为/Users/rcbt/work/workspace/rtmpdump-2.3/librtmp/armv7)，libdir，incdir都用变量${prefix}/lib(include)，并且在Libs:中添加openssl在各个平台上编译的lib路径(例如openssl arm7的lib路径为-L/Users/rcbt/Desktop/openssllib/)。
+
+
+
+在编译armv6和armv7的时候，要将ffmpeg目录下的libavutil文件夹中的arm文件夹中的intmath.h中最后一个函数前的宏定义#define av_clipl_int32 av_clipl_int32_arm注释掉，具体情况不详。
